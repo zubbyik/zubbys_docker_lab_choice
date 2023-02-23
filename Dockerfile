@@ -4,4 +4,4 @@ RUN if [ "${SERVER_ARG}" = "test" ];\
     then export name="ikem";\
     else export name="This is prod, we dont joke";\
     fi
-CMD echo $name
+CMD [ "/bin/sh", "echo", "$name" ]
