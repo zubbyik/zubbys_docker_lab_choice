@@ -1,7 +1,9 @@
-FROM alpine:3.14
+FROM bash:latest
 ARG SERVER_ARG
 RUN if [ "${SERVER_ARG}" = "test" ];\
-    then export name="ikem";\
-    else export name="This is prod, we dont joke";\
+    then echo 'This is Ikem'\
+    elif [ "$SERVER_ARG" = "dev" ]; then\
+    echo 'dev and we are good to go';\
+    else echo 'This is prod, we dont joke';\
     fi
-CMD [ "/bin/sh", "echo", "$name" ]
+CMD [ "sh", "-c", "echo '\n' && echo $name && echo '\n' " ]
